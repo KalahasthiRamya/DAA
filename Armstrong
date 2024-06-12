@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<math.h>
+
+int check(int num);
+
+int main(){
+    int num=371;
+    if(check(num)){
+        printf("Armstrong number");
+    }
+    else{
+        printf("Not an armstrong number");
+    }
+}
+
+int check(int n){
+    int num=n;
+    int count=0;
+    while(num>0){
+        int rem=num%10;
+        num=num/10;
+        count++;
+    }
+    int temp = n;
+    int sum = 0;
+    while(temp>0){
+        int rem=temp % 10;
+        sum+=pow(rem,count);
+        temp=temp/10;
+    }
+    return (sum==n);
+}
