@@ -1,0 +1,23 @@
+#include<stdio.h>
+
+int GCD(int m,int n);
+
+int main(){
+    int m=18;
+    int n=48;
+    if(n<m){
+        int temp = m;
+        m=n;
+        n=temp;
+    }
+    printf("%d",GCD(m,n));
+    return 0;
+}
+
+int GCD(int m,int n){
+    if(n==0){
+        return m;
+    }
+    
+    return GCD(n,m%n);
+}
