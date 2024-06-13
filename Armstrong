@@ -1,32 +1,52 @@
+C Programming:
+
 #include<stdio.h>
 #include<math.h>
 
-int check(int num);
+int noOfdigits(int n);
+int check(int num,int n);
 
 int main(){
-    int num=371;
-    if(check(num)){
+    int n=153;
+    int digits = noOfdigits(n);
+    if(n==check(n,digits)){
         printf("Armstrong number");
     }
     else{
         printf("Not an armstrong number");
     }
+    return 0;
 }
 
-int check(int n){
-    int num=n;
-    int count=0;
-    while(num>0){
-        int rem=num%10;
-        num=num/10;
-        count++;
+int noOfdigits(int n){
+    if(n==0){
+        return 0;
     }
-    int temp = n;
-    int sum = 0;
-    while(temp>0){
-        int rem=temp % 10;
-        sum+=pow(rem,count);
-        temp=temp/10;
-    }
-    return (sum==n);
+    return 1+noOfdigits(n/10);
 }
+
+int check(int num,int n){
+    if(num==0){
+        return 0;
+    }
+    return pow(num%10,n)+check(num/10,n);
+}
+
+
+Python:
+
+def noOfdigits(num):
+    if(num==0):
+        return 0
+    return 1+noOfdigits(num//10)
+def check(num,n):
+    if(num==0):
+        return 0
+    return (num%10)**(n) + check(num//10,n)
+
+num=153
+digits=noOfdigits(num)
+if(check(num,digits)==num):
+    print("Armstrong number")
+else:
+    print("Not an armstrong number")
