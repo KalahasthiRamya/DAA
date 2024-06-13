@@ -1,3 +1,5 @@
+C Programming:
+
 #include<stdio.h>
 
 int GCD(int m,int n);
@@ -21,3 +23,17 @@ int GCD(int m,int n){
     
     return GCD(n,m%n);
 }
+
+
+Python:
+
+def gcd(m,n):
+    if(n==0):
+        return m
+    return gcd(n,m%n)
+    
+a=48
+b=18
+if(b<a):
+    a,b=b,a
+print(gcd(a,b))
