@@ -19,3 +19,11 @@ int reversed(int num,int rev){
 
 
 
+def reversed(num,rev):
+    if(num==0):
+        return rev
+    return reversed(num//10,rev*10+num%10)
+    
+n=12345
+res=reversed(n,0)
+print(res)
