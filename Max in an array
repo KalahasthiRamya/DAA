@@ -1,0 +1,19 @@
+#include<stdio.h>
+
+int maximum(int nums[],int n){
+    int m = nums[0];
+    for(int i=1;i<n;i++){
+        if(nums[i]>m){
+            m = nums[i];
+        }
+    }
+    return m;
+}
+
+int main(){
+    int nums[] = {-10,2,3,-4,5};
+    int n = sizeof(nums)/sizeof(nums[0]);
+    int max = maximum(nums,n);
+    printf("Max is %d",max);
+    return 0;
+}
