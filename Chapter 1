@@ -1,1 +1,44 @@
+1.	Given an array of strings words, return the first palindromic string in the array. If there is no such string, return an empty string "". A string is palindromic if it reads the same forward and backward.
+Example 1:
+Input: words = ["abc","car","ada","racecar","cool"]
+Output: "ada"
+Explanation: The first string that is palindromic is "ada".
+Note that "racecar" is also palindromic, but it is not the first.
 
+
+#include<stdio.h>
+#include<string.h>
+
+int isPlaindrome(char str[]);
+char* first(char **str,int n);
+
+int isPalindrome(char str[]){
+    int left = 0;
+    int right = strlen(str)-1;
+    
+    while(left < right){
+        if(str[left] != str[right]){
+            return 0;
+        }
+        left++;
+        right--;
+    }
+    return 1;
+}
+
+char* first(char **str,int n){
+    for(int i = 0;i<n;i++){
+        if(isPalindrome(str[i])){
+            return str[i];
+        }
+    }
+    return "No palindrome";
+}
+
+int main(){
+    int size = 4;
+    char* str[] = {"abcd","ada","radan","we"};
+    char* res = first(str,size);
+    printf("%s ",res);
+    return 0;
+}
