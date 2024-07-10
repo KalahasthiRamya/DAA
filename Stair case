@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+int counting(int n){
+    if(n==1)
+    return 1;
+    if(n==2)
+    return 2;
+    
+    return counting(n-1) + counting(n-2);
+}
+
+int main(){
+    int n = 4;
+    printf("%d ", counting(n));
+    return 0;
+}
