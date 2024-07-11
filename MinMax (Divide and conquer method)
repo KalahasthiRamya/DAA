@@ -1,0 +1,57 @@
+#include<stdio.h>
+
+struct pair{
+    int min;
+    int max;
+};
+
+
+struct pair findMinMax(int arr[],int low,int high){
+    struct pair minmax,leftminmax,rightminmax;
+    int mid;
+    if(low == high){
+        minmax.min = arr[low];
+        minmax.max = arr[low];
+        return minmax;
+    }
+    if(high == low+1){
+        if(arr[low]<arr[high]){
+            minmax.min = arr[low];
+            minmax.max = arr[high];
+        }
+        else{
+            minmax.min = arr[high];
+            minmax.max = arr[low];
+        }
+        return minmax;
+    }
+    
+    mid = (low + high)/2;
+    leftminmax = findMinMax(arr,low,mid);
+    rightminmax = findMinMax(arr,mid+1,high);
+    
+    if(leftminmax.min<rightminmax.min){
+        minmax.min = leftminmax.min;
+    }
+    else{
+        minmax.min = rightminmax.min;
+    }
+    
+    if(leftminmax.max<rightminmax.max){
+        minmax.max = rightminmax.max;
+    }
+    else{
+        minmax.max = leftminmax.max;
+    }
+    return minmax;
+}
+
+
+int main(){
+    int arr[] = {9,3,5,2,13,73,12};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    struct pair minmax = findMinMax(arr,0,n-1);
+    printf("Minimum = %d\n",minmax.min);
+    printf("Maximum = %d\n",minmax.max);
+    return 0;
+}
