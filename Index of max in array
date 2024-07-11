@@ -1,0 +1,20 @@
+#include<stdio.h>
+
+int MaxIndex(int arr[],int n){
+    int i,j,index = 0;
+    int max = arr[0];
+    for(i=1;i<n;i++){
+        if(arr[i]>max){
+            max = arr[i];
+            index = i;
+        }
+    }
+    return index;
+}
+
+int main(){
+    int arr[] = {83,3,5,56,123,6,24};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    printf("%d",MaxIndex(arr,n));
+    return 0;
+}
