@@ -1,0 +1,23 @@
+#include<stdio.h>
+
+int dice(int n,int f,int s){
+    if(n==1){
+        if(s>=1 && s<=f)
+        return 1;
+        else
+        return 0;
+    }
+    int count = 0;
+    for(int i = 1;i<=f;i++){
+        count+=dice(n-1,f,s-i);
+    }
+    return count;
+}
+
+int main(){
+    int n = 3;
+    int f = 6;
+    int s = 15;
+    printf("No. of ways = %d ",dice(n,f,s));
+    return 0;
+}
