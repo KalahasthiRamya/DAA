@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<limits.h>
+#define n 4
+int assembly(int a1[n],int a2[n],int t1[n-1],int t2[n-1],int e1,int e2,int x1,int x2){
+    int time1[n+1],time2[n+1];
+    time1[0] = e1+a1[0];
+    time2[0] = e2+a2[0];
+    for(int i = 1;i<n;i++){
+        time1[i] = (time1[i-1]+a1[i]<time2[i-1]+t2[i-1]+a1[i]) ? time1[i-1]+a1[i] : time2[i-1]+t2[i-1]+a1[i];
+        time2[i] = (time2[i-1]+a2[i]<time1[i-1]+t1[i-1]+a2[i]) ? time2[i-1]+a2[i] : time1[i-1]+t1[i-1]+a2[i];
+    }
+    return (time1[n-1]+x1 < time2[n-1]+x2) ? time1[n-1]+x1 : time2[n-1]+x2;
+}
+int main(){
+    int a1[n] = {4,5,3,2};
+    int a2[n] = {2,10,1,4};
+    int t1[n-1] = {7,4,5};
+    int t2[n-1] = {9,2,8};
+    int e1 = 10;
+    int e2 = 12;
+    int x1 = 18;
+    int x2 = 7;
+    printf("Min cost = %d",assembly(a1,a2,t1,t2,e1,e2,x1,x2));
+    return 0;
+}
