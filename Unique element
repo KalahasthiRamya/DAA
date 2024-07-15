@@ -1,0 +1,26 @@
+#include<stdio.h>
+
+int main(){
+    int arr[]={9,5,8,3,5,8,5};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int i,j,unique=0;
+    int a[n];
+    for(i=0;i<n;i++){
+        int count = 0;
+        for(j=0;j<unique;j++){
+            if(arr[i] == a[j]){
+                count++;
+                break;
+            }
+        }
+        if(count==0){
+            a[i] = arr[i];
+            unique++;
+        }
+    }
+    
+    for(i=0;i<unique;i++){
+        printf("%d ",a[i]);
+    }
+    return 0;
+}
